@@ -59,6 +59,11 @@ await program.parseAsync(Bun.argv)
 const { user, password, feverApiUrl, bbdownApiUrl, feedGroups, bbdownOption, refreshingInterval } =
   program.opts()
 
+if (!bbdownApiUrl) {
+  console.error('BBDown API URL不能为空')
+  process.exit(1)
+}
+
 const API_KEY: string = new Bun.CryptoHasher('md5').update(`${user}:${password}`).digest('hex')
 const API_BASE: string = feverApiUrl
 const BBDOWN_API_URL: string = bbdownApiUrl
