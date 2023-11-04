@@ -36,16 +36,29 @@ Commands:
 - 不指定`-r, --refreshing-interval`时BBFever会在拉取一次更新并发送下载任务后退出，方便您使用自己的计划任务工具
 
 
-To install dependencies:
+## 运行方式
 
-```bash
+首先确认[Bun](https://bun.sh)已安装
+
+安装依赖:
+
+```shell
 bun install
 ```
 
-To run:
+运行:
 
-```bash
-bun run index.ts
+```shell
+bun run index.ts [options]
 ```
+
+### 打包为单个可执行文件
+
+如果想要部署方便，可以使用如下命令将程序打包成单个可执行文件:
+
+```shell
+npm run build
+```
+打包后的程序在`./dist/bbfever`中
 
 This project was created using `bun init`. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
