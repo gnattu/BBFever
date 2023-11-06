@@ -13,6 +13,7 @@ import {
 import { logTable } from './util'
 
 program
+  .name('bbfever')
   .addHelpCommand(false)
   .requiredOption('-u, --user <user>', 'Fever API用户名')
   .requiredOption('-p, --password <password>', 'Fever API密码')
@@ -28,7 +29,10 @@ program
     '以特定间隔（以秒为单位）轮询订阅源的更新。BBFever将以此模式持续运行，以检查更新',
   )
   .helpOption('-h, --help', '显示帮助信息')
-  .command('show-groups', '显示所有RSS订阅源组')
+  // Empty hanlder to force default behavior to no-subcommand
+  .action(async () => {})
+  .command('show-groups')
+  .description('显示所有RSS订阅源组')
   .action(async () => {
     const options = program.opts()
     const authData = new URLSearchParams()
