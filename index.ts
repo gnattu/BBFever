@@ -179,7 +179,8 @@ const markFeverItemRead = async (id: number) => {
 const submitDownloadTasks = async (tasks: DownloadTaskRequest[]) => {
   for (const task of tasks) {
     await waitForDownloadCapacity(5)
-    // console.log(`submitting ${task.taskOption.Url}`)
+    // eslint-disable-next-line no-console
+    console.log(`提交下载任务 ${task.taskOption.Url}`)
     const posted = await postDownloadTask(task.taskOption)
     if (posted) {
       await markFeverItemRead(task.feverId)
